@@ -90,6 +90,7 @@ router.get('/', function(req, res, next) {
 
     jwt().then(responseMessage => {
         res.set('Content-Type', 'application/jwt');
+        res.set('request-id', '7d28a33be02d8169b67350ef11355a0c');
         res.send(responseMessage);
     });    
 });
