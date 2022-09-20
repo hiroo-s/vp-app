@@ -89,6 +89,7 @@ router.get('/', function(req, res, next) {
     });
 
     jwt().then(responseMessage => {
+        res.set('Content-Type', 'application/jwt');
         res.send(responseMessage);
     });    
 });
