@@ -83,7 +83,7 @@ router.get('/', function(req, res, next) {
         let jwt = await didJWT.createJWT(
             payload,
             { issuer: did, signer },
-            { alg: 'ES256K' }
+            { alg: 'ES256K', 'kid': 'did:web:zkp-ld.org#c0b449ac2c564ca59374dd989422f391vcSigningKey-4dc0a' }
         )
         return jwt;
     });
