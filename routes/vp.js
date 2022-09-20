@@ -82,7 +82,7 @@ router.get('/', function(req, res, next) {
 
         let jwt = await didJWT.createJWT(
             payload,
-            { issuer: 'did:web:zkp-ld.org', signer },
+            { issuer: did, signer },
             { alg: 'ES256K', kid: did }
         )
         return jwt;
