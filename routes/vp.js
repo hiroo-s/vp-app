@@ -83,7 +83,7 @@ router.get('/', function(req, res, next) {
         let jwt = await didJWT.createJWT(
             payload,
             { issuer: did, signer },
-            { alg: 'ES256K', kid: did }
+            { alg: 'ES256K', kid: did + '#auth-key' }
         )
         return jwt;
     });
