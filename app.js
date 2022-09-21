@@ -12,6 +12,8 @@ var didRouter = require('./routes/did');
 
 var app = express();
 
+app.locals.vpResult = 'None';
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

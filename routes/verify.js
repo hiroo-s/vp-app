@@ -21,6 +21,7 @@ router.post('/', function(req, res, next) {
       p.then(r => {
         let sub = r.payload.vc.credentialSubject;
         console.log(sub);
+        res.app.locals.vpResult = sub["http://schema.org/familyName"] + " " + sub["http://schema.org/givenName"];
       });
     });
 
