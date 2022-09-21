@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@decentralized-identity/ion-tools": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "did-jwt": "5.12.4",
