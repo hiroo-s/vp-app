@@ -7,6 +7,7 @@ const webResolver = require('web-did-resolver')
 
 router.post('/', function(req, res, next) {
   let vpToken = req.body.vp_token;
+  console.log(vpToken);
 
   let p = didJWT.verifyJWT(vpToken, {
     audience: 'did:web:zkp-ld.org',
