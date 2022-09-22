@@ -23,19 +23,19 @@
     let interval = setInterval(function() {
       fetch("/chk?id=<%= uuid %>")
       .then(response => response.text())
+      .catch(error => {console.log(error)})
       .then(response => {
         if (response == "OK") [
           location.href = "/restricted?id=<%= uuid %>"
         ]
+
         count++;
-        if (count > 10) {
+        if (count > 20) {
           clearInterval(interval);
         }
-      }),
+      })},
       5000
-    });
-
-
+    )
     
   </script>
 </body>
