@@ -24,9 +24,10 @@
     let count = 60;
     let field = document.getElementById("seconds");
     let interval = setInterval(function() {
+      field.innerText = String(count) + "秒以内にウォレットでVCを共有してください。";
+      count--;
       // ２秒ごとに fetch する
       if (count % 2) {
-        count--;
         return;
       }
       fetch("/chk?id=<%= uuid %>")
@@ -37,8 +38,6 @@
           location.href = "/restricted?id=<%= uuid %>"
         ]
 
-        field.innerText = String(count) + "秒以内にウォレットでVCを共有してください。";
-        count--;
         if (count < 0) {
           clearInterval(interval);
         }
