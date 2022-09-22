@@ -10,9 +10,11 @@
 
 <body>
   <h1>
-    Welcome
+    ようこそ
   </h1>
   <p>
   <%= name %> さん
   </p>
+
+  <input type="button" onclick="location.href='/logout?id=<%= uuid %>';" value="ログアウト">
 </body>

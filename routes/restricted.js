@@ -9,7 +9,10 @@ router.get('/', function(req, res, next) {
     return;
   }
 
-  param = {'name': req.app.locals.verified[uuid].name};
+  param = {
+    'name': req.app.locals.verified[uuid].name,
+    'uuid': uuid
+  };
   
   res.render('restricted', param);
 });

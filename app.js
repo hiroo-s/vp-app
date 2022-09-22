@@ -10,6 +10,8 @@ var vpRouter = require('./routes/vp');
 var verifyRouter = require('./routes/verify');
 var chkRouter = require('./routes/chk');
 var restrictedRouter = require('./routes/restricted');
+var logoutRouter = require('./routes/logout');
+var debugRouter = require('./routes/debug');
 var didRouter = require('./routes/did');
 
 var app = express();
@@ -33,6 +35,8 @@ app.use('/vp', vpRouter);
 app.use('/verify', verifyRouter);
 app.use('/chk', chkRouter);
 app.use('/restricted', restrictedRouter);
+app.use('/logout', logoutRouter);
+app.use('/debug', debugRouter);
 app.use('/.well-known', didRouter);
 
 // catch 404 and forward to error handler
