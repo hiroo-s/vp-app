@@ -19,6 +19,7 @@
     // https://github.com/davidshimjs/qrcodejs
     new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vp/<%= uuid %>");
 
+    /*
     setInterval(function() {
       fetch("/chk?id=<%= uuid %>")
       .then(response => response.text())
@@ -29,6 +30,7 @@
       }),
       1000
     });
+    */
 
     
   </script>
