@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
   param = {'name': req.app.locals.verified[uuid].name};
   
-  res.render('index', param);
+  res.render('restricted', param);
 });
 
 module.exports = router;
