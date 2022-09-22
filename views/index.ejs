@@ -17,10 +17,21 @@
   <div id="qrcode"></div>
   <script type="text/javascript">
     // https://github.com/davidshimjs/qrcodejs
-    new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vp");
-  </script>
+    new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vp/<%= uuid %>");
 
-  <p>Last verified VC: <%= name %>
+    setInterval(function() {
+      fetch("/chk?id=<%= uuid %>")
+      .then(response => response.text())
+      .then(response => {
+        if (response == "OK") [
+          location.href = "/restricted?id=<%= uuid %>"
+        ]
+      }),
+      1000
+    });
+
+    
+  </script>
 </body>
 
 </html>

@@ -8,11 +8,14 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var vpRouter = require('./routes/vp');
 var verifyRouter = require('./routes/verify');
+var chkRouter = require('./routes/chk');
+var restrictedRouter = require('./routes/restricted');
 var didRouter = require('./routes/did');
 
 var app = express();
 
-app.locals.vpResult = 'None';
+app.locals.verifed = {};
+app.locals.count = 0;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +31,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/vp', vpRouter);
 app.use('/verify', verifyRouter);
+app.use('/chk', chkRouter);
+app.use('/restricted', restrictedRouter);
 app.use('/.well-known', didRouter);
 
 // catch 404 and forward to error handler

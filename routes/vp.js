@@ -6,7 +6,8 @@ const did = 'did:ion:EiC9ObIXfBMX-sZTMluX2s1mt54bXyUNpfeBq5UKPrcjRQ:eyJkZWx0YSI6
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/:uuid', function(req, res, next) {
+    let uuid = req.params.uuid;
     let signer = didJWT.ES256KSigner('f471b9e951eadedcf2de47a574bc76c9d5f85bd4c485423ff0e9c61f8d5b5d42');
 
     let jwt = (async () => {
@@ -21,7 +22,7 @@ router.get('/', function(req, res, next) {
             scope: "openid",
             nonce: "uAFlqIIrylxyV10EmZ2E9A==",
             client_id: did, // verifier の DID
-            redirect_uri: "https://vp-app.azurewebsites.net/verify",
+            redirect_uri: "https://vp-app.azurewebsites.net/verify/" + uuid,
             state: "djHMKtRn7MozQBS8uGB0JL2CjTYBFVf3BzohcBlaBlgY9NzaTmv4TmfiWpXH8mIYLYNJVhpgegux0LoJ4KytR4UdXDVDm0yrdzXU8oVfLBO5Bv5oj1wlA2snZDxmkYpfr/x0mt5eU6t0RKR2sIl9a545ZaTjaN+hLTMl5Bg5L0Cx0e0y/bxmPDvpOf7IRRqphXinVLmFHlXRZQsGXclHKXY9ZZtLoHVFkP2mWoK0/YYBF5FhjZWhhDPwy9W1qZTTmfdKXutbinB4pXKXUNj78MJCV0ZFwEp0EcITU8Ver0KamuXEZSI39aU9oXaRmKMzr9aczZja0oMkxLY76FX9h2O9iTqQG5oN/UJnxoMZaAB9Aogwidg5COCA58QowTVGV3l/RJ672CVwaX3Q2dfbfNdNHfigBJvOe/rC3mGVe2bLCc7WZuuiDrVzm4rLgyRaj7IADONiZLbTCel/DT9LsumgtaTWMUk1R43bypp9ok1JxiaMJ6lRI7azfuN5OkrF0VuoOH6OCQJrarjcBM2fjBckMudpH+70M898OAn9cT3uYIvR/SgZ/r76LNJKaYRsQ0HeEOFUeGDyXSJgqHt1nRkvpHVUBO0Q6Cs5NQ==",
             registration: {
                 client_name: "クレデンシャル検証者",
