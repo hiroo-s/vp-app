@@ -9,6 +9,7 @@ const did = 'did:ion:EiC9ObIXfBMX-sZTMluX2s1mt54bXyUNpfeBq5UKPrcjRQ:eyJkZWx0YSI6
 
 router.post('/:uuid', function(req, res, next) {
   let vpToken = req.body.vp_token;
+  let uuid = req.params.uuid;
   console.log(vpToken);
 
   let p = didJWT.verifyJWT(vpToken, {
@@ -24,7 +25,7 @@ router.post('/:uuid', function(req, res, next) {
       p.then(r => {
         let sub = r.payload.vc.credentialSubject;
         console.log(sub);
-        res.app.locals.verified[uuid] = {
+        req.app.locals.verified[uuid] = {
           name: sub["http://schema.org/familyName"] + " " + sub["http://schema.org/givenName"]
         }
       });
