@@ -21,11 +21,15 @@
     // https://github.com/davidshimjs/qrcodejs
     new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vp/<%= uuid %>");
 
-    let count = 60;
+    let count = 120;
     let field = document.getElementById("seconds");
     let interval = setInterval(function() {
-      field.innerText = String(count) + "秒以内にウォレットでVCを共有してください。";
+      field.innerText = String(count) + "秒以内にウォレットでVCを提出してください。";
       count--;
+      if (count < 0) {
+        clearInterval(interval);
+      }
+
       // ２秒ごとに fetch する
       if (count % 2) {
         return;
@@ -37,10 +41,6 @@
         if (response == "OK") [
           location.href = "/restricted?id=<%= uuid %>"
         ]
-
-        if (count < 0) {
-          clearInterval(interval);
-        }
       })},
       1000
     )
