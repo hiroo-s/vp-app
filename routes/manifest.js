@@ -49,7 +49,7 @@ router.get('/:uuid', function(req, res, next) {
           "id": "display"
         },
         "input": {
-          "credentialIssuer": "https://vp-app.azurewebsites.net/issue/" + req.query.uuid,
+          "credentialIssuer": "https://vp-app.azurewebsites.net/issue/" + req.params.uuid,
           "issuer": did,
           "attestations": {
             "idTokens": [

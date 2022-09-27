@@ -24,7 +24,7 @@ router.get('/:uuid', function(req, res, next) {
         scope: "openid",
         nonce: nonce,
         client_id: did,
-        redirect_uri: "https://vp-app.azurewebsites.net/complete/" + req.query.uuid,
+        redirect_uri: "https://vp-app.azurewebsites.net/complete/" + req.params.uuid,
         prompt: "create",
         state: stateUUID,
         exp: now + 3000,
@@ -60,7 +60,7 @@ router.get('/:uuid', function(req, res, next) {
                             ],
                             issuance: [
                                 {
-                                    manifest: "https://vp-app.azurewebsites.net/manifest/" + req.query.uuid
+                                    manifest: "https://vp-app.azurewebsites.net/manifest/" + req.params.uuid
                                 }
                             ]
                         }
