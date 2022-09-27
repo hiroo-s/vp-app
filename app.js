@@ -14,6 +14,7 @@ var logoutRouter = require('./routes/logout');
 var debugRouter = require('./routes/debug');
 var newRouter = require('./routes/new');
 var vcRouter = require('./routes/vc');
+var manifestRouter = require('./routes/manifest');
 var didRouter = require('./routes/did');
 
 var app = express();
@@ -41,6 +42,7 @@ app.use('/logout', logoutRouter);
 app.use('/debug', debugRouter);
 app.use('/new', newRouter);
 app.use('/vc', vcRouter);
+app.use('/manifest', vcRouter);
 app.use('/.well-known', didRouter);
 
 // catch 404 and forward to error handler

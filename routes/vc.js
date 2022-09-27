@@ -60,7 +60,7 @@ router.get('/:uuid', function(req, res, next) {
                             ],
                             issuance: [
                                 {
-                                    manifest: "https://vp-app.azurewebsites.net/manifest"
+                                    manifest: "https://vp-app.azurewebsites.net/manifest/" + req.query.uuid
                                 }
                             ]
                         }
