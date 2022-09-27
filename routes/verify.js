@@ -31,6 +31,7 @@ router.post('/:uuid', function(req, res, next) {
       });
     });
 
+  res.set('Content-Type', 'text/plain');
   res.send('OK');
 });
 

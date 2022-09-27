@@ -15,6 +15,7 @@ var debugRouter = require('./routes/debug');
 var newRouter = require('./routes/new');
 var vcRouter = require('./routes/vc');
 var manifestRouter = require('./routes/manifest');
+var issueRouter = require('./routes/issue');
 var completeRouter = require('./routes/complete');
 var didRouter = require('./routes/did');
 
@@ -44,6 +45,7 @@ app.use('/debug', debugRouter);
 app.use('/new', newRouter);
 app.use('/vc', vcRouter);
 app.use('/manifest', manifestRouter);
+app.use('/issue', issueRouter);
 app.use('/complete', completeRouter);
 app.use('/.well-known', didRouter);
 

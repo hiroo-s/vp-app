@@ -12,6 +12,7 @@ router.post('/:uuid', function(req, res, next) {
   let uuid = req.params.uuid;
   console.log(data);
 
+  res.set('Content-Type', 'text/plain');
   res.send('Accepted');
 });
 
