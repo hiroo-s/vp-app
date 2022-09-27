@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    新規発行
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>
+    <div id="seconds"></div>
+  </h1>
+  </p>
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <div id="qrcode"></div>
+  <%= uuid %>
+
+  <script type="text/javascript">
+    // https://github.com/davidshimjs/qrcodejs
+    new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vc/<%= uuid %>");
+  
+  </script>
+</body>
+
+</html>
