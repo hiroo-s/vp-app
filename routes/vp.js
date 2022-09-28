@@ -66,7 +66,7 @@ router.get('/:uuid', function(req, res, next) {
                                             ],
                                             filter: {
                                                 type: "string",
-                                                pattern: "did:web:zkp-ld.org"
+                                                pattern: "did:web:zkp-ld.org|did:ion:EiAM_G-oM1TsSHnaS5y6zH7wMS8vRd"
                                             }
                                         }
                                     ]
