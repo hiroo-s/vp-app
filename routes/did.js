@@ -1,9 +1,50 @@
 var express = require('express');
 var router = express.Router();
+let didJWT = require('did-jwt');
+let conf = require('./const.js');
 
-/* GET home page. */
-router.get('/did.json', function(req, res, next) {
-  res.render('did');
+router.get('/did.json', function (req, res, next) {
+    res.render('did');
+});
+
+
+router.get('/did-configuration.json', function (req, res, next) {
+    payload = {
+        "sub": conf.did,
+        "iss": conf.did,
+        "nbf": 1661395960,
+        "exp": 2450314360,
+        "vc": {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld"
+            ],
+            "issuer": "did:web:zkp-ld.org",
+            "issuanceDate": "2022-08-25T02:52:40.568Z",
+            "expirationDate": "2047-08-25T02:52:40.568Z",
+            "type": [
+                "VerifiableCredential",
+                "DomainLinkageCredential"
+            ],
+            "credentialSubject": {
+                "id": conf.did,
+                "origin": conf.domain
+            }
+        }
+    };
+    let jwt = (async () => {
+        let jwt = await didJWT.createJWT(
+            payload,
+            { issuer: conf.did, signer: conf.signer },
+            { alg: 'ES256K', kid: conf.did + '#auth-key' }
+        )
+        return jwt;
+    });
+
+    jwt().then(responseMessage => {
+        res.set('Content-Type', 'application/json');
+        res.render('did-configuration', {jwt: responseMessage});
+    });
 });
 
 module.exports = router;
