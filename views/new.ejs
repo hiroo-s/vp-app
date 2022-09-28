@@ -10,18 +10,51 @@
 
 <body>
   <h1>
-    <div id="seconds"></div>
+    新規発行
   </h1>
   </p>
   <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-  <div id="qrcode"></div>
-  <%= uuid %>
-
   <script type="text/javascript">
-    // https://github.com/davidshimjs/qrcodejs
-    new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vc/<%= uuid %>");
-  
+    function submit() {
+      let data = {
+        uuid: "<%= uuid %>",
+        family_name: document.getElementById('family_name').value,
+        given_name:  document.getElementById('given_name').value
+      }
+
+      fetch('/issue', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      }).then(x => {
+        // https://github.com/davidshimjs/qrcodejs
+        new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vc/<%= uuid %>");
+        let qr = document.getElementById('qrText');
+        qr.style.display = 'block';
+      });
+    }
   </script>
+
+  <div>
+    <label for="familyName">姓: </label>
+    <input type="text" size="20" name="family_name" id="family_name" class="vc-claims">
+  </div>
+  <div>
+    <label for="givenName">名: </label>
+    <input type="text" size="20" name="given_name" id="given_name" class="vc-claims">
+  </div>
+  <button type="button" id="sign-in" onClick="submit()">発行</button>
+
+  <div id="qrText" style="display:none;">
+    <br>
+    <div id="qrcode"></div>
+    <%= uuid %>
+    <p class="small-text">
+      Microsoft Authenticator でスキャンしてください
+    </p>
+  </div>
 </body>
 
 </html>

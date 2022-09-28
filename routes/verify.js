@@ -10,7 +10,6 @@ const did = 'did:ion:EiC9ObIXfBMX-sZTMluX2s1mt54bXyUNpfeBq5UKPrcjRQ:eyJkZWx0YSI6
 router.post('/:uuid', function(req, res, next) {
   let vpToken = req.body.vp_token;
   let uuid = req.params.uuid;
-  console.log(vpToken);
 
   let p = didJWT.verifyJWT(vpToken, {
     audience: did,

@@ -22,6 +22,7 @@ var didRouter = require('./routes/did');
 var app = express();
 
 app.locals.verified = {};
+app.locals.request = {};
 app.locals.count = 0;
 
 // view engine setup
