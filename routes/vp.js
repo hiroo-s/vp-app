@@ -66,7 +66,7 @@ router.get('/:uuid', function(req, res, next) {
                                             ],
                                             filter: {
                                                 type: "string",
-                                                pattern: "did:web:zkp-ld.org|did:ion:EiAM_G-oM1TsSHnaS5y6zH7wMS8vRd"
+                                                pattern: "did:web:zkp-ld.org|did:ion:EiAM_G-oM1TsSHnaS5y6zH7wMS8vRd4mFwjBymv_wt332g:eyJkZWx0YSI6eyJwYXRjaGVzIjpbeyJhY3Rpb24iOiJyZXBsYWNlIiwiZG9jdW1lbnQiOnsicHVibGljS2V5cyI6W3siaWQiOiJhdXRoLWtleSIsInB1YmxpY0tleUp3ayI6eyJjcnYiOiJzZWNwMjU2azEiLCJrdHkiOiJFQyIsIngiOiJEODJyOWQ5emR5cmlVTVpOcjZPQjBRclFxSThVa0RaNjZkZjdHMC1XOU84IiwieSI6ImI4azRqM3QxN2JjWFhsNGFTMU5ibmI2b203M2xhTm91WU9paVhPMm51cFEifSwicHVycG9zZXMiOlsiYXV0aGVudGljYXRpb24iLCJrZXlBZ3JlZW1lbnQiXSwidHlwZSI6IkVjZHNhU2VjcDI1NmsxVmVyaWZpY2F0aW9uS2V5MjAxOSJ9XSwic2VydmljZXMiOlt7ImlkIjoiZG9tYWluLTEiLCJzZXJ2aWNlRW5kcG9pbnQiOnsib3JpZ2lucyI6WyJodHRwczovL3ZwLWFwcC5henVyZXdlYnNpdGVzLm5ldC8iXX0sInR5cGUiOiJMaW5rZWREb21haW5zIn1dfX1dLCJ1cGRhdGVDb21taXRtZW50IjoiRWlDMC1Vb1AyRk1lMFZWeFNrRFF4clg4UFVDeEx2UGRhTW9ib1VIdXBmaGo3USJ9LCJzdWZmaXhEYXRhIjp7ImRlbHRhSGFzaCI6IkVpQWdfUVJOeHhnR0dtRGx3dHY1aGM4T2pBdmdRSWxQV1VIakp6REVKZ1d4NmciLCJyZWNvdmVyeUNvbW1pdG1lbnQiOiJFaURHYXdNYzgxZ1NnTklpbnh4RVRfYnFCWUJjd3JyVU5Fd1ZhUlp3QVNkT2t3In19"
                                             }
                                         }
                                     ]
