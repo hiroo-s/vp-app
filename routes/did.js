@@ -19,7 +19,7 @@ router.get('/did-configuration.json', function (req, res, next) {
                 "https://www.w3.org/2018/credentials/v1",
                 "https://identity.foundation/.well-known/contexts/did-configuration-v0.0.jsonld"
             ],
-            "issuer": "did:web:zkp-ld.org",
+            "issuer": conf.did,
             "issuanceDate": "2022-08-25T02:52:40.568Z",
             "expirationDate": "2047-08-25T02:52:40.568Z",
             "type": [
