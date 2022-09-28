@@ -34,11 +34,7 @@ router.get('/did-configuration.json', function (req, res, next) {
     };
     let jwt = (async () => {
         let now = Math.floor(new Date().getTime() / 1000);
-        const timestamps = {
-            iat: now,
-            exp: now + 3000
-        };
-        let fullPayload = { ...timestamps, ...payload, iss: conf.did };
+        let fullPayload = { ...payload, iss: conf.did };
         let header = { alg: 'ES256K', kid: conf.did + '#auth-key' };
         return didJWT.createJWS(fullPayload, conf.signer, header);
     });
