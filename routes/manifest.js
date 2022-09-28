@@ -12,8 +12,6 @@ router.get('/:uuid', function(req, res, next) {
     let vpUUID = uuidv4();
     let nonce = Buffer.from(Array(16).fill(0).map(x => Math.floor(Math.random() * 255))).toString('base64');
 
-    let signer = didJWT.ES256KSigner('f471b9e951eadedcf2de47a574bc76c9d5f85bd4c485423ff0e9c61f8d5b5d42');
-
     let payload = {
         "id": "NGUxY2VjZDEtYzc2Ni00NzY3LWI2MTgtZDhjNjQ1MTM2MmNmdmVyaWZpZWRjcmVkZW50aWFsZXhhbXBsZQ",
         "display": {
