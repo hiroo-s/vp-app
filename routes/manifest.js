@@ -92,8 +92,8 @@ router.get('/:uuid', function(req, res, next) {
     });
 
     jwt().then(responseMessage => {
-        res.set('Content-Type', 'application/jwt');
-        res.send(responseMessage);
+        res.set('Content-Type', 'application/json');
+        res.send('{"token":"' + responseMessage + '"}');
     });
 });
 
