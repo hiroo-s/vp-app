@@ -20,7 +20,7 @@ router.get('/:uuid', function(req, res, next) {
         "id": "NGUxY2VjZDEtYzc2Ni00NzY3LWI2MTgtZDhjNjQ1MTM2MmNmdmVyaWZpZWRjcmVkZW50aWFsZXhhbXBsZQ",
         "display": {
           "locale": "en-US",
-          "contract": "https://vp-app.azurewebsites.net/manifest/" + req.params.uuid;
+          "contract": "https://vp-app.azurewebsites.net/manifest/" + req.params.uuid,
           "card": {
             "title": "姓名クレデンシャル",
             "issuedBy": "https://vp-app.azurewebsites.net/",
