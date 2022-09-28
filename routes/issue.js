@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const { v4: uuidv4 } = require('uuid');
-let didJWT = require("did-jwt");
+let didJWT = require('did-jwt');
+let conf = require('./const.js');
 
-const did = 'did:ion:EiC9ObIXfBMX-sZTMluX2s1mt54bXyUNpfeBq5UKPrcjRQ:eyJkZWx0YSI6eyJwYXRjaGVzIjpbeyJhY3Rpb24iOiJyZXBsYWNlIiwiZG9jdW1lbnQiOnsicHVibGljS2V5cyI6W3siaWQiOiJhdXRoLWtleSIsInB1YmxpY0tleUp3ayI6eyJjcnYiOiJzZWNwMjU2azEiLCJrdHkiOiJFQyIsIngiOiJqRFlYMkpFbXBrTmR3cHpnVndKYjhwNEpXY3BuNGpPQ2hBZW5ZZ3JTTndnIiwieSI6ImRTQUFkOVlob09jXzdfUUZtZFNON3VsQ29Qb3NNcGZ4YVlFVUppcndESGcifSwicHVycG9zZXMiOlsiYXV0aGVudGljYXRpb24iLCJrZXlBZ3JlZW1lbnQiXSwidHlwZSI6IkVjZHNhU2VjcDI1NmsxVmVyaWZpY2F0aW9uS2V5MjAxOSJ9XX19XSwidXBkYXRlQ29tbWl0bWVudCI6IkVpRGhWcC14RnhRaEZ2TWtubUVzYnVCZC0xenJsMlpNTGpQd0p1NzNVNUNQTkEifSwic3VmZml4RGF0YSI6eyJkZWx0YUhhc2giOiJFaUFROE9MbWxCcmotRS1hZDZWcDZvZF9DcDQ4Z2JsWnFHdEV0VjJ3YXZPQ1VnIiwicmVjb3ZlcnlDb21taXRtZW50IjoiRWlEcjEzMUx2Mzl1QTJoSE0xY2U3VWtaTTJMUEVtblRsNjZxQWw2TWFadXkydyJ9fQ';
 
 router.post('/', function(req, res, next) {
     let uuid = req.body.uuid;
@@ -27,8 +27,6 @@ router.post('/:uuid', function(req, res, next) {
     let data = req.app.locals.request[uuid];
     delete req.app.locals.request[uuid]
 
-    let signer = didJWT.ES256KSigner('f471b9e951eadedcf2de47a574bc76c9d5f85bd4c485423ff0e9c61f8d5b5d42');
-
     let payload = {
         "vc": {
             "@context": [
@@ -49,7 +47,7 @@ router.post('/:uuid', function(req, res, next) {
             }
           },
           "jti": "urn:pic:f6c90a9ae07d41b386cec5728f50f3a1",
-          "iss": did,
+          "iss": conf.did,
           "sub": walletDID,
           "iat": now,
           "exp": now + 30*24*60*60
@@ -58,8 +56,8 @@ router.post('/:uuid', function(req, res, next) {
     let jwt = (async () => {
         let jwt = await didJWT.createJWT(
             payload,
-            { issuer: did, signer },
-            { alg: 'ES256K', kid: did + '#auth-key' }
+            { issuer: conf.did, signer: conf.signer },
+            { alg: 'ES256K', kid: conf.did + '#auth-key' }
         )
         return jwt;
     });
