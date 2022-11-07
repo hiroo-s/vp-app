@@ -24,7 +24,6 @@
     let url = "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vp/<%= uuid %>";
     if (/iPhone/i.test(navigator.userAgent)) {
         window.location.replace(url);
-        return;
     }
 
     // https://github.com/davidshimjs/qrcodejs
