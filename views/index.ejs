@@ -21,8 +21,14 @@
   
 
 <script type="text/javascript">
+    let url = "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vp/<%= uuid %>");
+    if (/iPhone/i.test(navigator.userAgent)) {
+        window.location.replace(url);
+        return;
+    }
+
     // https://github.com/davidshimjs/qrcodejs
-    new QRCode(document.getElementById("qrcode"), "openid-vc://?request_uri=https://vp-app.azurewebsites.net/vp/<%= uuid %>");
+    new QRCode(document.getElementById("qrcode"), url);
 
     let count = 120;
     let field = document.getElementById("seconds");
